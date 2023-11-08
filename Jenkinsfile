@@ -18,7 +18,7 @@ pipeline {
         stage('production') {
             when {
                 expression {
-                    branch == 'refs/heads/production'
+                    branch == 'production'
                 }
             }
             steps {
@@ -30,7 +30,7 @@ pipeline {
         stage('staging') {
             when {
                 expression {
-                    branch == 'refs/heads/staging'
+                    branch == 'staging'
                 }
             }
             steps {
