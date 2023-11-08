@@ -4,6 +4,11 @@ pipeline {
     stages {
         
         stage('kurva') {
+            when {
+                expression {
+                    kurva == 'true'
+                }
+            }
             steps {
                 script {
                     sh 'echo "kurva!"'
