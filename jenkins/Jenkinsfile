@@ -2,6 +2,14 @@ pipeline {
     agent any
 
     stages {
+        stage('Build') {
+            steps {
+                echo '===start building image==='
+                dir('./') {
+                    sh 'docker build -t app .'
+                }
+            }
+        }
         
         
     }
