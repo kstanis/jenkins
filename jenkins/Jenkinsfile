@@ -6,7 +6,7 @@ pipeline {
             steps {
                 echo '===start building image==='
                 dir('./') {
-                    sh 'docker build -t app .'
+                    sh 'sudo docker build -t app .'
                 }
             }
         }
