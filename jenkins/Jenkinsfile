@@ -21,7 +21,7 @@ pipeline {
                    sh 'mkdir -p /var/lib/jenkins/workspace/Staging/backup-directory'
                 }
                 sh 'docker save app -o /var/lib/jenkins/workspace/Staging/backup-directory/app-artifact.tar'
-                echo '====backup completed===='
+                echo '==backup completed=='
             }
         }
         
