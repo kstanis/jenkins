@@ -16,7 +16,7 @@ pipeline {
                 expression { currentBuild.resultIsBetterOrEqualTo('SUCCESS') }
             }
             steps {
-                echo '====start creating backup===='
+                echo '===start creating backup==='
                 script {
                    sh 'mkdir -p /var/lib/jenkins/workspace/Staging/backup-directory'
                 }
