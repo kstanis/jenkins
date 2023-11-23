@@ -1,0 +1,39 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build Production') {
+            steps {
+                echo 'start building Production'
+                dir('./') {
+                    sh 'docker build -t app .'
+                }
+            }
+        }
+        
+        stage('Backup Production') {
+            when {
+                expression { currentBuild.resultIsBetterOrEqualTo('SUCCESS') }
+            }
+            steps {
+                echo 'creating backup'
+                script {
+                   sh 'mkdir -p /var/lib/jenkins/workspace/Staging/backup-directory-prod'
+                }
+                sh 'docker save app -o /var/lib/jenkins/workspace/Staging/backup-directory-prod/artifact-prod.tar'
+                echo 'backup completed'
+            }
+        }
+        
+        
+        stage('Deploy Production') {
+            when {
+                expression { currentBuild.resultIsBetterOrEqualTo('SUCCESS') }
+            }
+            steps {
+                echo 'start deploying production application'
+                sh 'docker run -d -p 5001:5000 app'
+            }
+        }
+    }
+}
