@@ -109,6 +109,7 @@ pipeline {
 
 Прописываем URL нашего дженкинса и добавляем github-webhook/
 Меняем Content type на json
+
 Важно убедиться в том, что порт 8080 открыт не только для вас
 
 ![image](pictures/githook2.png)
